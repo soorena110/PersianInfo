@@ -2,9 +2,9 @@
 برای گرفتن اطلاعات قبض از کلاس PersianBillExtractor استفاده کنید
 
 ```js
-import BillInfoExtractor from "../BillInfoExtractor";
+import PersianBillInfoExtractor from "../PersianBillInfoExtractor";
 
-const paymentInfo = BillInfoExtractor.getPaymentInfo(paymentId); // {billPrice, yearCode, period}
+const paymentInfo = PersianBillInfoExtractor.getPaymentInfo(paymentId); // {billPrice, yearCode, period}
 
-const billInfo = BillInfoExtractor.getBillInfo(billId); // {serviceType, placeCode, subscribeNumber}
+const billInfo = PersianBillInfoExtractor.getBillInfo(billId); // {serviceType, placeCode, subscribeNumber}
 ```
