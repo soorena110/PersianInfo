@@ -6,5 +6,5 @@ import PersianBillInfoExtractor from "../PersianBillInfoExtractor";
 
 const paymentInfo = PersianBillInfoExtractor.getPaymentInfo(paymentId); // {billPrice, yearCode, period}
 
-const billInfo = PersianBillInfoExtractor.getBillInfo(billId); // {serviceType, placeCode, subscribeNumber}
+const billInfo = PersianBillInfoExtractor.getBillInfo(billId); // {serviceType, placeCode, subscribeNumber, serviceImage}
 ```

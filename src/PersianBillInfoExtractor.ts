@@ -1,6 +1,12 @@
 const billServiceTypes = {
-    "1": "آب", "2": "برق", "3": "گاز", "4": "تلفن ثابت", "5": "تلفن همراه", "6": "عوارض شهرداری",
-    "7": "سازمان مالیات", "8": "جرایم راهنمایی و رانندگی"
+    "1": "آب",
+    "2": "برق",
+    "3": "گاز",
+    "4": "تلفن ثابت",
+    "5": "تلفن همراه",
+    "6": "عوارض شهرداری",
+    "7": "سازمان مالیات",
+    "8": "جرایم راهنمایی و رانندگی"
 } as any;
 
 export default class PersianBillInfoExtractor {
@@ -21,7 +27,7 @@ export default class PersianBillInfoExtractor {
     }
 
     /**
-     * returns information as {serviceType, placeCode, subscribeNumber}.
+     * returns information as {serviceType, placeCode, subscribeNumber, serviceImage}.
      * will return undefined if length of billId is less than 13
      */
     static getBillInfo(billId: string | number) {
@@ -32,9 +38,10 @@ export default class PersianBillInfoExtractor {
 
         const serviceTypeCode = billId[billId.length - 2];
         const serviceType = billServiceTypes[serviceTypeCode];
+        const serviceImage =  `https://raw.githubusercontent.com/soorena110/PersianInfo/master/images/${serviceTypeCode}.png`;
         const placeCode = billId.substr(billId.length - 5, 3);
         const subscribeNumber = billId.substr(0, billId.length - 5);
 
-        return {serviceType, placeCode, subscribeNumber}
+        return {serviceType, placeCode, subscribeNumber, serviceImage}
     }
 }
