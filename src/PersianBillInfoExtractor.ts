@@ -64,13 +64,13 @@ const isValidPaymentId = (paymentId: string, billId: string) => {
 };
 
 const computePaymentControlBit = (paymentIdWithoutLastBit: string, billId: string) => {
-    const removeRightZeros = (id: string) => {
-        while (id[id.length - 1] == '0')
-            id = id.substr(0, id.length - 1);
+    const removeLeftZeros = (id: string) => {
+        while (id[0] == '0')
+            id = id.substr(1, id.length - 1);
         return id;
     };
 
-    const mergedPaymentIdAndBillIdWithoutRightZeros = removeRightZeros(billId) + removeRightZeros(paymentIdWithoutLastBit);
+    const mergedPaymentIdAndBillIdWithoutRightZeros = removeLeftZeros(billId) + removeLeftZeros(paymentIdWithoutLastBit);
     return compute11CheckSum(mergedPaymentIdAndBillIdWithoutRightZeros);
 };
 
