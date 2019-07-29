@@ -82,8 +82,8 @@ const numberToWords = (value: number) => {
     const splittedByTousands = splitTousands(value);
     return splittedByTousands.map((r, ix) => {
         const underThousand = convertValueBelowTousandToWord(r);
-        if (underThousand == 'یک')
-            return thousands[ix]
+        if (thousands[ix] == '' && underThousand == ones[1])
+            return thousands[ix];
         return underThousand + ' ' + thousands[ix];
     }).reverse().join(' و ');
 };
