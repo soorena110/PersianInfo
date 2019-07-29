@@ -1,6 +1,6 @@
 {
   "name": "persian-info",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "It is good for persian info such as persian bill info",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -27,7 +27,13 @@
     "compare persian words",
     "standardize persian chars",
     "fix persian chars",
-    "persian letters"
+    "persian letters",
+    "persian date",
+    "persian calendar",
+    "persian",
+    "iran date",
+    "persian date convertor",
+    "date convertor"
   ],
   "author": "MohammadReza Azarang",
   "license": "ISC",

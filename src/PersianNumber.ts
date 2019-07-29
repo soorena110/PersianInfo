@@ -13,10 +13,8 @@ const englishNumber = '0123456789';
 
 export default class PersianNumber {
     static formatPrice(value?: number) {
-        if (value === undefined)
-            return '-';
-        if (isNaN(value))
-            return value;
+        if (value === undefined || isNaN(value))
+            return '';
 
         const valueString = value.toString();
         const pricision = valueString.split('.')[1];
@@ -31,7 +29,13 @@ export default class PersianNumber {
     }
 
     static numberToWords(value: number) {
-        return numberToWords(value);
+        const [beforeSeperator, afterSeperator] = value.toString().split('.');
+
+        let result = numberToWords(parseInt(beforeSeperator));
+        if (afterSeperator)
+            result += ' ممیز ' + numberToWords(parseInt(afterSeperator));
+
+        return result;
     }
 
     static convertPersianNumberToEnglish(str: string) {
@@ -75,10 +79,11 @@ const numberToWords = (value: number) => {
     if (!isFinite(value)) return infinite;
     if (value == 0) return zero;
 
-    value = Math.floor(value);
-
     const splittedByTousands = splitTousands(value);
     return splittedByTousands.map((r, ix) => {
-        return convertValueBelowTousandToWord(r) + ' ' + thousands[ix];
+        const underThousand = convertValueBelowTousandToWord(r);
+        if (underThousand == 'یک')
+            return thousands[ix]
+        return underThousand + ' ' + thousands[ix];
     }).reverse().join(' و ');
 };

@@ -51,6 +51,29 @@ Persian.letter.convertArabicCharsToPersianChars(myWord); // علی
 // no chars like "يك‍دِبِزِذِِشِِسِى" any more.
 ```
 
+
+##Persian Date
+
+تبدیل تاریخ میلادی به جلالی
+
+```js
+Persian.date.convertToJalaliObject(new Date()); // gives you {year, month, day}
+Persian.date.convertToJalaliObject('2019-07-29'); // {year:1398, month:5, day:7}
+
+Persian.date.convertToJalaliString(); // gives you current date in forman yyyy/mm/dd
+Persian.date.convertToJalaliString('2019-07-29'); // 1398/5/7
+Persian.date.convertToJalaliString('2019-07-29', 'yy/m/d'); // 98/5/7
+Persian.date.convertToJalaliString('2019-07-29', 'd mn yy'); // ـ 7 مرداد 98
+Persian.date.convertToJalaliString('2019-07-29', 'dw d mn yy'); // ـ دوشنبه 7 مرداد 98
+Persian.date.convertToJalaliString('2019-07-29', 'ds d mn yy'); // ـ د 7 مرداد 98
+```
+
+تبدیل تاریخ جلالی به میلادی
+
+```js
+Persian.date.convertJalaliToGregorian({year:1398, month:5, day:7}); // returns an object of type `Date`
+```
+
 ##Persian Bill
 
 برای گرفتن اطلاعات قبض از کلاس PersianBillExtractor استفاده کنید
