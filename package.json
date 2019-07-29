@@ -1,6 +1,6 @@
 {
   "name": "persian-info",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "description": "It is good for persian info such as persian bill info",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
