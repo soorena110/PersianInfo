@@ -65,7 +65,7 @@ Persian.date.convertToJalaliString('2019-07-29'); // 1398/5/7
 Persian.date.convertToJalaliString('2019-07-29', 'yy/m/d'); // 98/5/7
 Persian.date.convertToJalaliString('2019-07-29', 'd mn yy'); // ـ 7 مرداد 98
 Persian.date.convertToJalaliString('2019-07-29', 'dw d mn yy'); // ـ دوشنبه 7 مرداد 98
-Persian.date.convertToJalaliString('2019-07-29', 'ds d mn yy'); // ـ د 7 مرداد 98
+Persian.date.convertToJalaliString('2019-07-29', 'sw d mn yy'); // ـ د 7 مرداد 98
 ```
 
 تبدیل تاریخ جلالی به میلادی

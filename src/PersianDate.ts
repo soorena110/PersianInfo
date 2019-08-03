@@ -9,6 +9,12 @@ export default class PersianDate {
     static convertToJalaliObject(value?: any) {
         const gDate = !value ? new Date() :
             typeof value == 'object' ? value : new Date(value);
+
+        if (gDate.toString() == "Invalid Date") {
+            console.error(gDate);
+            throw `Invalid Date`;
+        }
+
         const jDate = gDate.toLocaleString('fa', {year: 'numeric', month: 'numeric', day: 'numeric', weekday: 'long'});
         const [weekday, parts] = jDate.split(' ');
         const [year, month, day] = PersianNumber.convertPersianNumberToEnglish(parts)

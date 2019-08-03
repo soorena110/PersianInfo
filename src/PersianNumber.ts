@@ -12,7 +12,9 @@ const farsiNumbers = '۰۱۲۳۴۵۶۷۸۹';
 const englishNumber = '0123456789';
 
 export default class PersianNumber {
-    static formatPrice(value?: number) {
+    static formatPrice(value?: number | string) {
+        if (typeof value == 'string')
+            value = Number(value);
         if (value === undefined || isNaN(value))
             return '';
 
@@ -28,7 +30,7 @@ export default class PersianNumber {
         return value.replace(/,/g, '');
     }
 
-    static numberToWords(value: number) {
+    static numberToWords(value: number | string) {
         const [beforeSeperator, afterSeperator] = value.toString().split('.');
 
         let result = numberToWords(parseInt(beforeSeperator));
