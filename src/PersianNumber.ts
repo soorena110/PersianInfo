@@ -13,17 +13,17 @@ const englishNumber = '0123456789';
 
 export default class PersianNumber {
     static formatPrice(value?: number | string) {
-        if (typeof value == 'string')
-            value = Number(value);
-        if (value === undefined || isNaN(value))
+        if (value === undefined)
             return '';
+        if (typeof value == 'number')
+            value = value.toString();
 
-        const valueString = value.toString();
-        const pricision = valueString.split('.')[1];
-        const val = parseFloat(valueString.split('.')[0]).toFixed(0).replace('.', ',');
+        const valueStringParts = value.split('.');
+        const precision = valueStringParts[1];
+        const val = parseFloat(valueStringParts[0]).toFixed(0).replace('.', ',');
         const integer = val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        return integer + (pricision !== undefined ? '.' + pricision : '');
+        return integer + (precision !== undefined ? '.' + precision : '');
     }
 
     static unformatPrice(value: string) {

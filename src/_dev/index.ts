@@ -19,6 +19,13 @@ import Persian from "../index";
 // test(6543734743641324);
 
 
+const test = (value: string) => {
+    console.log(value, '->', Persian.number.formatPrice(value));
+};
+test('0.00');
+test('0.001');
+
+
 // const test = (value?: string) => {
 //     const p = Persian.date.convertToJalaliObject(value);
 //
@@ -32,8 +39,8 @@ import Persian from "../index";
 // test('2020-02-26');
 // test('2020-06-03');
 
-console.warn(Persian.date.convertToJalaliString());
-console.warn(Persian.date.convertToJalaliString('2019-07-29', 'yy/m/d'));
-console.warn(Persian.date.convertToJalaliString('2019-07-29', 'd mn yy'));
-console.warn(Persian.date.convertToJalaliString('2019-07-29', 'dw d mn yy'));
-console.warn(Persian.date.convertToJalaliString('2019-07-29', 'sw d mn yy'));
+// console.warn(Persian.date.convertToJalaliString());
+// console.warn(Persian.date.convertToJalaliString('2019-07-29', 'yy/m/d'));
+// console.warn(Persian.date.convertToJalaliString('2019-07-29', 'd mn yy'));
+// console.warn(Persian.date.convertToJalaliString('2019-07-29', 'dw d mn yy'));
+// console.warn(Persian.date.convertToJalaliString('2019-07-29', 'sw d mn yy'));
