@@ -1,12 +1,12 @@
 # PersianInfo
 
-##Import
+## Import
 
 ```js
 import Persian from "persian-info";
 ```
 
-##Persian Number
+## Persian Number
 
 برای فرمت مقادیر و سپریتور گذاشتن
 
@@ -31,7 +31,7 @@ Persian.number.convertPersianNumberToEnglish("۲۱۴۱۲۴"); // "214124"
 ```
 
 
-##Persian Letter
+## Persian Letter
 
 برای مقایسه کلمات فارسی
 
@@ -52,20 +52,20 @@ Persian.letter.convertArabicCharsToPersianChars(myWord); // علی
 ```
 
 
-##Persian Date
+## Persian Date
 
 تبدیل تاریخ میلادی به جلالی
 
 ```js
-Persian.date.convertToJalaliObject(new Date()); // gives you {year, month, day}
-Persian.date.convertToJalaliObject('2019-07-29'); // {year:1398, month:5, day:7}
+Persian.date.convertDateTimeToJalali(new Date()); // gives you {year, month, day}
+Persian.date.convertDateTimeToJalali('2019-07-29'); // {year:1398, month:5, day:7}
 
-Persian.date.convertToJalaliString(); // gives you current date in forman yyyy/mm/dd
-Persian.date.convertToJalaliString('2019-07-29'); // 1398/5/7
-Persian.date.convertToJalaliString('2019-07-29', 'yy/m/d'); // 98/5/7
-Persian.date.convertToJalaliString('2019-07-29', 'd mn yy'); // ـ 7 مرداد 98
-Persian.date.convertToJalaliString('2019-07-29', 'dw d mn yy'); // ـ دوشنبه 7 مرداد 98
-Persian.date.convertToJalaliString('2019-07-29', 'sw d mn yy'); // ـ د 7 مرداد 98
+Persian.date.convertDateTimeToJalaliString(); // gives you current date in forman yyyy/mm/dd
+Persian.date.convertDateTimeToJalaliString('2019-07-29'); // 1398/5/7
+Persian.date.convertDateTimeToJalaliString('2019-07-29', 'yy/m/d'); // 98/5/7
+Persian.date.convertDateTimeToJalaliString('2019-07-29', 'd mn yy'); // ـ 7 مرداد 98
+Persian.date.convertDateTimeToJalaliString('2019-07-29', 'dw d mn yy'); // ـ دوشنبه 7 مرداد 98
+Persian.date.convertDateTimeToJalaliString('2019-07-29', 'sw d mn yy'); // ـ د 7 مرداد 98
 ```
 
 تبدیل تاریخ جلالی به میلادی
@@ -74,14 +74,38 @@ Persian.date.convertToJalaliString('2019-07-29', 'sw d mn yy'); // ـ د 7 مر�
 Persian.date.convertJalaliToGregorian({year:1398, month:5, day:7}); // returns an object of type `Date`
 ```
 
-##Persian Bill
+گرفتن تاریخ امروز به جلالی
+```js
+Persian.date.getJalaliNow(); // today's jalali date
+```
+
+گرفتن اولین روز هفته در یک ماه مشخص (مثلا اولین روز مهر 98 دوشنبه است.)
+
+```js
+Persian.date.getJalaliMonthFirstWeekDay(1398, 7); // 2
+Persian.date.getJalaliMonthFirstWeekDay(98, 7); // 2
+```
+
+گرفتن تعداد روزهای یک ماه مشخص
+
+```js
+Persian.date.getJalaliMonthDaysCount(1398, 7); // 30
+Persian.date.getJalaliMonthDaysCount(98, 12); // 29
+Persian.date.getJalaliMonthDaysCount(98, 6); // 31
+```
+
+گرفتن مشخصات فارسی ماه و هفته
+```js
+Persian.date.monthNames; // ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
+Persian.date.weekNames; // ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه']
+```
+
+## Persian Bill
 
 برای گرفتن اطلاعات قبض از کلاس PersianBillExtractor استفاده کنید
 
 ```js
-import PersianBillInfoExtractor from "../PersianBillInfoExtractor";
+const paymentInfo = Persian.bill.getPaymentInfo(paymentId); // {billPrice, yearCode, period}
 
-const paymentInfo = PersianBillInfoExtractor.getPaymentInfo(paymentId); // {billPrice, yearCode, period}
-
-const billInfo = PersianBillInfoExtractor.getBillInfo(billId); // {serviceType, placeCode, subscribeNumber, serviceImage}
+const billInfo = Persian.bill.getBillInfo(billId); // {serviceType, placeCode, subscribeNumber, serviceImage}
 ```
