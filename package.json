@@ -1,20 +1,30 @@
 {
   "name": "persian-info",
-  "version": "0.8.0",
-  "description": "It is good for persian info such as persian bill info",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "version": "1.0.0",
+  "description": "It is good for persian info such as persian bill info, date, and else.",
   "scripts": {
-    "clean": "rimraf dist",
-    "start": "webpack-dev-server -d --env.dev",
-    "build": "npm run clean & webpack -p --env.prod",
-    "postbuild": "tsc --emitDeclarationOnly --declaration",
-    "deploy": "npm run build & npm run build:dev & npm run postbuild & npm publish --access=public"
+    "start": "react-app-rewired start",
+    "ts-build": "rimraf ./dist/** && tsc",
+    "babel-build": "rimraf ./dist/** && babel ./src --out-dir dist --extensions '.ts,.tsx,.js'",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release",
+    "watch": "tsc -- --watch",
+    "test": "jest",
+    "deploy": "npm run ts-build && npm publish --access=public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/soorena110/PersianInfo.git"
+    "start": "react-scripts start",
+    "url": "https://github.com/soorena110/PersianInfo"
   },
+  "bugs": {
+    "url": "https://github.com/soorena110/PersianInfo/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "keywords": [
     "persian",
     "persian info",
@@ -35,19 +45,51 @@
     "persian date convertor",
     "date convertor"
   ],
-  "author": "MohammadReza Azarang",
+  "author": "MohammadReza Azarang.",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/soorena110/PersianInfo/issues"
-  },
-  "homepage": "https://github.com/soorena110/PersianInfo#readme",
   "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "rimraf": "^2.7.1",
-    "typescript": "^3.6.3",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
+    "@babel/plugin-transform-typescript": "^7.3.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/react": "^16.8.5",
+    "@types/react-dom": "^16.8.2",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "eslint": "^7.13.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-test-renderer": "^16.8.3",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^15.13.3",
+    "tslint": "^5.13.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^4.1.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {
+    "react-app-rewired": "^2.1.7",
+    "react-scripts": "^4.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -53,7 +53,7 @@ export default class PersianNumber {
 
 
 const splitTousands = (value: number) => {
-    const parts = [];
+    const parts = [] as number[];
     while (value > 0) {
         parts.push(value % 1000);
         value = Math.floor(value / 1000);
@@ -69,7 +69,7 @@ const convertValueBelowTousandToWord = (value: number) => {
     const ten = tens[Math.floor(value % 100 / 10)];
     const one = ones[Math.floor(value % 10)];
 
-    const ret = [];
+    const ret = [] as string[];
     if (hundred) ret.push(hundred);
     if (ten) ret.push(ten);
     if (one) ret.push(one);

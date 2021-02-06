@@ -57,8 +57,10 @@ Persian.letter.convertArabicCharsToPersianChars(myWord); // علی
 تبدیل تاریخ میلادی به جلالی
 
 ```js
-Persian.date.convertDateTimeToJalali(new Date()); // gives you {year, month, day}
-Persian.date.convertDateTimeToJalali('2019-07-29'); // {year:1398, month:5, day:7}
+Persian.date.convertDateTimeToJalali(new Date()); // gives you {year, month, day, hours, minutes, seconds, weekday, weekdayName, format}
+const d = Persian.date.convertDateTimeToJalali('2019-07-29'); // {year:1398, month:5, day:7, ...}
+d.format('dw d mn') // ـ دوشنبه 7 مرداد
+
 
 Persian.date.convertDateTimeToJalaliString(); // gives you current date in forman yyyy/mm/dd
 Persian.date.convertDateTimeToJalaliString('2019-07-29'); // 1398/5/7
@@ -66,7 +68,28 @@ Persian.date.convertDateTimeToJalaliString('2019-07-29', 'yy/m/d'); // 98/5/7
 Persian.date.convertDateTimeToJalaliString('2019-07-29', 'd mn yy'); // ـ 7 مرداد 98
 Persian.date.convertDateTimeToJalaliString('2019-07-29', 'dw d mn yy'); // ـ دوشنبه 7 مرداد 98
 Persian.date.convertDateTimeToJalaliString('2019-07-29', 'sw d mn yy'); // ـ د 7 مرداد 98
+Persian.date.convertDateTimeToJalaliString('2019-07-29T15:08:07', 'hh hours MM mins ss secs !'); // 15 hours 08 mins 07 secs !
 ```
+علامت ها :
+
+y = year with one/two digits : 0 thorough 99
+yy = year with two digits : 00 thorough 99
+yyyy = year with two digits : ??00 thorough ??99 ex. 1379
+m = month with one/two digits : 1 thorough 12
+mm = month with two digits : 01 thorough 12
+d = day with one/two digits : 1 thorough 31
+dd = day with two digits : 01 thorough 31
+
+h = hours with one/two digits : 0 thorough 59
+hh = hours with two digits : 00 thorough 59
+M = minutes with one/two digits : 0 thorough 59
+MM = minutes with two digits : 00 thorough 59
+s = seconds with one/two digits : 0 thorough 59
+ss = seconds with two digits : 00 thorough 59
+
+dw = the number of the day in week : 0 (saturday) thorough 6 (friday)
+dn = the name of the day in week : شنبه or یکشنبه or دوشنبه or سه‌شنبه or etc.
+ds = the first letter of the day in week : ش or ی or د or س or چ or پ or ج
 
 تبدیل تاریخ جلالی به میلادی
 
